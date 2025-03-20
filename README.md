@@ -24,7 +24,7 @@ Multiple models were tested, including:
 - **TF-IDF + Logistic Regression**
 
 ## **Results**
-- The best-performing model achieved an accuracy of **~68%**, with strong recall for ELI5 posts.
+- The best-performing model achieved an recall of **~87%**, with strong recall for ELI5 posts.
 - The model prioritizes how a question is asked rather than its scientific content.
 
 ## **Future Improvements**
