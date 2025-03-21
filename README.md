@@ -20,10 +20,10 @@ The dataset consists of Reddit posts with the following features:
 
 ###  Data Preprocessing  
 To prepare the data for modeling, we:  
-✔ **Combined** title and body text to maximize information.  
-✔ **Removed stopwords** and performed **tokenization**.  
-✔ **Applied lemmatization** to normalize words.  
-✔ **Vectorized text** using **TF-IDF** and **CountVectorizer**.  
+ **Combined** title and body text to maximize information.  
+ **Removed stopwords** and performed **tokenization**.  
+ **Applied lemmatization** to normalize words.  
+ **Vectorized text** using **TF-IDF** and **CountVectorizer**.  
 
 ##  Exploratory Data Analysis (EDA)  
 
