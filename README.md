@@ -6,9 +6,9 @@ This project aims to **classify Reddit posts** as belonging to either:
 - **r/ExplainLikeImFive (ELI5)** – A subreddit where users request simple, analogy-based explanations.  
 
 By **accurately identifying the intent and complexity** of a post, this classification system can:  
- **Recommend** if an AskScience user should post in ELI5 for better responses.  
- **Improve subreddit moderation** by reducing misplaced posts.  
- **Enhance user engagement** by ensuring posts receive appropriate responses.  
+ - **Recommend** if an AskScience user should post in ELI5 for better responses.  
+ - **Improve subreddit moderation** by reducing misplaced posts.  
+ - **Enhance user engagement** by ensuring posts receive appropriate responses.  
 
 ##  Dataset  
 
@@ -20,10 +20,10 @@ The dataset consists of Reddit posts with the following features:
 
 ###  Data Preprocessing  
 To prepare the data for modeling, we:  
- **Combined** title and body text to maximize information.  
- **Removed stopwords** and performed **tokenization**.  
- **Applied lemmatization** to normalize words.  
- **Vectorized text** using **TF-IDF** and **CountVectorizer**.  
+ - **Combined** title and body text to maximize information.  
+ - **Removed stopwords** and performed **tokenization**.  
+ - **Applied lemmatization** to normalize words.  
+ - **Vectorized text** using **TF-IDF** and **CountVectorizer**.  
 
 ##  Exploratory Data Analysis (EDA)  
 
@@ -39,9 +39,9 @@ Several machine learning models were tested, including:
 - **Random Forest (Selected Model)**  
 
  **Why Random Forest?**  
- **Handles non-linearity** in text data.  
- **Performs well with sparse features** (like TF-IDF).  
- **Robust against overfitting** due to ensemble learning.  
+ - **Handles non-linearity** in text data.  
+ - **Performs well with sparse features** (like TF-IDF).  
+ - **Robust against overfitting** due to ensemble learning.  
 
 ###  Hyperparameter Tuning  
 **GridSearchCV** was used to optimize:  
@@ -67,14 +67,14 @@ Since **correctly identifying ELI5 posts is a priority**, we evaluated the model
 
 ##  Results & Recommendations  
 
- **Implement model in r/AskScience** to recommend if a post is better suited for ELI5.  
- **Reduce user burden** by suggesting the right subreddit automatically.  
- **Enhance engagement** by ensuring users receive responses at the right complexity level.  
+ - **Implement model in r/AskScience** to recommend if a post is better suited for ELI5.  
+ - **Reduce user burden** by suggesting the right subreddit automatically.  
+ - **Enhance engagement** by ensuring users receive responses at the right complexity level.  
 
 ##  Future Improvements  
 
- **Integrate BERT-based models** for better contextual understanding.  
- **Deploy as a subreddit bot** to assist users in real-time.  
- **Fine-tune feature selection** to improve classification accuracy.  
+ - **Integrate BERT-based models** for better contextual understanding.  
+ - **Deploy as a subreddit bot** to assist users in real-time.  
+ - **Fine-tune feature selection** to improve classification accuracy.  
  
 
