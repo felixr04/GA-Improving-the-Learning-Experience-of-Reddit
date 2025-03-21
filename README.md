@@ -58,7 +58,7 @@ Since **correctly identifying ELI5 posts is a priority**, we evaluated the model
 | Precision  | 0.81 | 0.63 |
 | Recall     | 0.53 | 0.87 |
 | F1-score   | 0.64 | 0.73 |
-| Accuracy   | **69.02%** | - |
+
 
  **Key Insights:**  
 - **High recall for ELI5 (0.87)** ensures that users needing simple explanations get correctly classified.  
