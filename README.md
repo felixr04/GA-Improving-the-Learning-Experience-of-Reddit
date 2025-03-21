@@ -1,33 +1,80 @@
-# **Subreddit Question Sorter: AskScience vs. ELI5**
+#  Subreddit Post Classifier: AskScience vs. ExplainLikeImFive  
 
-## **Project Overview**
-This project aims to classify Reddit posts as belonging to either **r/AskScience** (a subreddit for scientifically rigorous answers) or **r/ExplainLikeImFive (ELI5)** (a subreddit for simplified, analogy-driven explanations). By analyzing how questions are asked, the model helps ensure users receive responses at an appropriate complexity level.
+##  Project Overview  
+This project aims to **classify Reddit posts** as belonging to either:  
+- **r/AskScience** – A subreddit where users seek detailed, expert-backed scientific explanations.  
+- **r/ExplainLikeImFive (ELI5)** – A subreddit where users request simple, analogy-based explanations.  
 
-## **Dataset**
-Data was collected from both subreddits using the **Reddit API (PRAW)**, retrieving posts from the **hot** and **top** categories. The dataset consists of **title, body, subreddit, and post ID**, with preprocessing steps to handle missing values and imbalances.
+By **accurately identifying the intent and complexity** of a post, this classification system can:  
+ **Recommend** if an AskScience user should post in ELI5 for better responses.  
+ **Improve subreddit moderation** by reducing misplaced posts.  
+ **Enhance user engagement** by ensuring posts receive appropriate responses.  
 
-## **Data Preprocessing**
-- **Handling Missing Data**: Null values in the body were filled with the corresponding title.
-- **Text Cleaning**: Stopwords removed, tokenization, and lemmatization applied.
-- **Feature Engineering**: Combined title and body for more context in classification.
-- **Vectorization**: TF-IDF and CountVectorizer were used to convert text into numerical representations.
+##  Dataset  
 
-## **Exploratory Data Analysis (EDA)**
-- **Class Distribution**: Significant class imbalance (AskScience dominates).
-- **TF-IDF Analysis**: Top distinguishing words between subreddits identified.
+The dataset consists of Reddit posts with the following features:  
+- **Title** – The post’s headline.  
+- **Body** – The post’s full content (if available).  
+- **Subreddit** – The label indicating AskScience (0) or ELI5 (1).  
+- **Post ID** – A unique identifier for tracking posts.  
 
-## **Model Selection & Training**
-Multiple models were tested, including:
-- **Random Forest** (Hyperparameter tuned with GridSearchCV)
-- **Support Vector Machine (SVM)**
-- **Count Vectorizer + Naive Bayes**
-- **TF-IDF + Logistic Regression**
+###  Data Preprocessing  
+To prepare the data for modeling, we:  
+✔ **Combined** title and body text to maximize information.  
+✔ **Removed stopwords** and performed **tokenization**.  
+✔ **Applied lemmatization** to normalize words.  
+✔ **Vectorized text** using **TF-IDF** and **CountVectorizer**.  
 
-## **Results**
-- The best-performing model achieved an recall of **~87%**, with strong recall for ELI5 posts.
-- The model prioritizes how a question is asked rather than its scientific content.
+##  Exploratory Data Analysis (EDA)  
 
-## **Future Improvements**
-- **Better Handling of Imbalance**: Oversampling or synthetic data generation.
-- **Deep Learning Approaches**: Exploring BERT or DistilBERT.
-- **Feature Engineering**: Incorporating additional linguistic patterns.
+EDA was performed to **understand word distributions** and **text characteristics** of each subreddit:  
+- **Most common words** were visualized using bar charts.  
+- **TF-IDF feature importance** highlighted key terms differentiating the subreddits.  
+- **Comparison of word frequencies** between AskScience and ELI5 posts.  
+
+##  Model Selection & Training  
+
+Several machine learning models were tested, including:  
+- **Logistic Regression**    
+- **Random Forest (Selected Model)**  
+
+ **Why Random Forest?**  
+ **Handles non-linearity** in text data.  
+ **Performs well with sparse features** (like TF-IDF).  
+ **Robust against overfitting** due to ensemble learning.  
+
+###  Hyperparameter Tuning  
+**GridSearchCV** was used to optimize:  
+- `n_estimators` (number of trees)  
+- `max_depth` (tree depth)  
+- `min_samples_split` (minimum samples to split) 
+
+##  Model Evaluation  
+
+Since **correctly identifying ELI5 posts is a priority**, we evaluated the model based on **recall for ELI5** rather than just accuracy.  
+
+| Metric  | AskScience (0) | ELI5 (1) |
+|---------|--------------|---------|
+| Precision  | 0.81 | 0.63 |
+| Recall     | 0.53 | 0.87 |
+| F1-score   | 0.64 | 0.73 |
+| Accuracy   | **69.02%** | - |
+
+ **Key Insights:**  
+- **High recall for ELI5 (0.87)** ensures that users needing simple explanations get correctly classified.  
+- **High precision for AskScience (0.81)** ensures scientific discussions remain accurate.  
+- **Some AskScience posts are misclassified as ELI5**, likely due tp some new users not being aware of ELIF and posting in r/askscience instead.  
+
+##  Results & Recommendations  
+
+ **Implement model in r/AskScience** to recommend if a post is better suited for ELI5.  
+ **Reduce user burden** by suggesting the right subreddit automatically.  
+ **Enhance engagement** by ensuring users receive responses at the right complexity level.  
+
+##  Future Improvements  
+
+ **Integrate BERT-based models** for better contextual understanding.  
+ **Deploy as a subreddit bot** to assist users in real-time.  
+ **Fine-tune feature selection** to improve classification accuracy.  
+ 
+
